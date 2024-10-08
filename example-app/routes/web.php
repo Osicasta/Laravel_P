@@ -20,7 +20,23 @@ Route::get('/', function () {
 });
 
 Route::get('/index', function () {
-    return view('index');
+    return view('/layouts/index');
+});
+
+Route::get('/about', function () {
+    return view('/pag/about');
+});
+
+Route::get('/book', function () {
+    return view('/pag/book');
+});
+
+Route::get('/menu', function () {
+    return view('/pag/menu');
+});
+
+Route::get('/exit', function () {
+    return view('/pag/exit');
 });
 
 Route::resource('tasks', TaskController::class);
