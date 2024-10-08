@@ -21,8 +21,8 @@
                 <th>Acción</th>
             </tr>
             <tr>
-                <td class="fw-bold">Estudiar Laravel</td>
-                <td>Ver video: tu primer CRUD con laravel 10 en el canal de YouDevs</td>
+                <td class="fw-bold">Add user CRUD</td>
+                <td>Agregación de usuarios para la plataformas</td>
                 <td>
                     31/03/23
                 </td>
