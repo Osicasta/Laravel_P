@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title> Feane </title>
+  <title> Reston</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -44,7 +44,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Feane
+              Reston
             </span>
           </a>
 
@@ -55,16 +55,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item ">
-                <a class="nav-link" href="{{ url('/dashboard') }}">Home </a>
+                <a class="nav-link" href="{{ url('/') }}">Inicio </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('/menu') }}">Menu</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/about') }}">About <span class="sr-only">(current)</span> </a>
+                <a class="nav-link" href="{{ url('/about') }}">Sobre nosotros <span class="sr-only">(current)</span> </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/book') }}">Book Table</a>
+                <a class="nav-link" href="{{ url('/book') }}">Reserva una mesa</a>
               </li>
             </ul>
             <div class="user_option">
@@ -130,9 +130,7 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
+             
             </div>
           </div>
         </nav>
@@ -156,15 +154,18 @@
           <div class="detail-box">
             <div class="heading_container">
               <h2>
-                We Are Feane
+                Somos Reston
               </h2>
             </div>
             <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
-            </p>
+    ¡Bienvenidos a Resto! Somos un restaurante de comidas rápidas apasionado por ofrecerte la mejor experiencia culinaria en un ambiente acogedor y moderno. Desde nuestra apertura, nos hemos comprometido a servir platos deliciosos y de calidad, utilizando ingredientes frescos y recetas innovadoras.<br><br>
+
+    En Resto, entendemos que cada bocado cuenta. Por eso, nuestro menú incluye una variedad de opciones que satisfacen todos los gustos, desde hamburguesas jugosas y papas fritas crujientes hasta ensaladas frescas y batidos refrescantes. Ya sea que estés buscando una comida rápida para llevar o un lugar para disfrutar con amigos y familia, aquí encontrarás lo que necesitas.<br><br>
+
+    Nuestro equipo está compuesto por apasionados de la gastronomía, dedicados a brindarte un servicio excepcional y hacer de cada visita una experiencia memorable. En Resto, no solo nos preocupamos por el sabor, sino también por el ambiente y la satisfacción de nuestros clientes.<br><br>
+
+    ¡Te invitamos a visitarnos y descubrir por qué Resto es el lugar favorito de todos para disfrutar de las mejores comidas rápidas!
+</p>
             <a href="">
               Read More
             </a>
@@ -175,33 +176,32 @@
   </section>
 
   <!-- end about section -->
-
-  <!-- footer section -->
-  <footer class="footer_section">
+ <!-- footer section -->
+ <footer class="footer_section">
     <div class="container">
       <div class="row">
         <div class="col-md-4 footer-col">
           <div class="footer_contact">
             <h4>
-              Contact Us
+              Contactanos
             </h4>
             <div class="contact_link_box">
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  Estamos en:
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Llama al 3125792542
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                  restonrestaurant@gmail.com
                 </span>
               </a>
             </div>
@@ -210,10 +210,10 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Reston
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+            Resto es un restaurante de comidas rápidas dedicado a ofrecer platos deliciosos y frescos en un ambiente acogedor. Nuestro compromiso es brindarte la mejor experiencia culinaria cada vez que nos visites.
             </p>
             <div class="footer_social">
               <a href="">
@@ -236,10 +236,10 @@
         </div>
         <div class="col-md-4 footer-col">
           <h4>
-            Opening Hours
+            Horarios
           </h4>
           <p>
-            Everyday
+            Todos los dias
           </p>
           <p>
             10.00 Am -10.00 Pm
@@ -248,8 +248,8 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
+          &copy; <span id="displayYear"></span> Todos los derechos reservados por
+          <a href="https://html.design/">restonrestaurant</a><br><br>
           &copy; <span id="displayYear"></span> Distributed By
           <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
         </p>

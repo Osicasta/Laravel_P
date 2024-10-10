@@ -13,7 +13,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="">
 
-  <title> Feane </title>
+  <title> Reston</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -44,7 +44,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Feane
+              Reston
             </span>
           </a>
 
@@ -55,16 +55,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/dashboard') }}">Home </a>
+                <a class="nav-link" href="{{ url('/') }}">Inicio </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('/menu') }}">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('/about') }}">About</a>
+                <a class="nav-link" href="{{ url('/about') }}">Sobre nosotros</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/book') }}">Book Table <span class="sr-only">(current)</span> </a>
+                <a class="nav-link" href="{{ url('/book') }}">Reserva una mesa <span class="sr-only">(current)</span> </a>
               </li>
             </ul>
             <div class="user_option">
@@ -130,9 +130,7 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
+              
             </div>
           </div>
         </nav>
@@ -146,7 +144,7 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Book A Table
+          Haz una reservacion 
         </h2>
       </div>
       <div class="row">
@@ -154,18 +152,18 @@
           <div class="form_container">
             <form action="">
               <div>
-                <input type="text" class="form-control" placeholder="Your Name" />
+                <input type="text" class="form-control" placeholder="Tu nombre" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Phone Number" />
+                <input type="text" class="form-control" placeholder="Numero de telefono" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Your Email" />
+                <input type="email" class="form-control" placeholder="Tu Email" />
               </div>
               <div>
                 <select class="form-control nice-select wide">
                   <option value="" disabled selected>
-                    How many persons?
+                    Cuantas personas?
                   </option>
                   <option value="">
                     2
@@ -186,7 +184,7 @@
               </div>
               <div class="btn_box">
                 <button>
-                  Book Now
+                  Reserva ahora
                 </button>
               </div>
             </form>
@@ -202,32 +200,32 @@
   </section>
   <!-- end book section -->
 
-  <!-- footer section -->
-  <footer class="footer_section">
+<!-- footer section -->
+<footer class="footer_section">
     <div class="container">
       <div class="row">
         <div class="col-md-4 footer-col">
           <div class="footer_contact">
             <h4>
-              Contact Us
+              Contactanos
             </h4>
             <div class="contact_link_box">
               <a href="">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  Estamos en:
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Llama al 3125792542
                 </span>
               </a>
               <a href="">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                  restonrestaurant@gmail.com
                 </span>
               </a>
             </div>
@@ -236,10 +234,10 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              Reston
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+            Resto es un restaurante de comidas rápidas dedicado a ofrecer platos deliciosos y frescos en un ambiente acogedor. Nuestro compromiso es brindarte la mejor experiencia culinaria cada vez que nos visites.
             </p>
             <div class="footer_social">
               <a href="">
@@ -262,10 +260,10 @@
         </div>
         <div class="col-md-4 footer-col">
           <h4>
-            Opening Hours
+            Horarios
           </h4>
           <p>
-            Everyday
+            Todos los dias
           </p>
           <p>
             10.00 Am -10.00 Pm
@@ -274,8 +272,8 @@
       </div>
       <div class="footer-info">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
+          &copy; <span id="displayYear"></span> Todos los derechos reservados por
+          <a href="https://html.design/">restonrestaurant</a><br><br>
           &copy; <span id="displayYear"></span> Distributed By
           <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
         </p>
