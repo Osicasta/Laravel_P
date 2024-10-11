@@ -26,10 +26,13 @@ class CommentController extends Controller
         ]);
 
         // Crear un nuevo comentario en la base de datos
-        Comment::create($request->only(['name', 'message'])); // Asegúrate de que solo los campos permitidos se utilicen
+        $comment = Comment::create($request->only(['name', 'message'])); // Asegúrate de que solo los campos permitidos se utilicen
         
-        // Redirigir de nuevo al dashboard
-        return redirect()->route('dashboard')->with('success', 'Comentario agregado exitosamente.');
+        // Retornar respuesta JSON con el comentario creado
+        return response()->json([
+            'message' => 'Comentario agregado exitosamente.',
+            'comment' => $comment
+        ], 201);
     }
 
     // Actualizar un comentario
@@ -53,7 +56,7 @@ class CommentController extends Controller
     {
         // Eliminar el comentario de la base de datos
         $comment->delete();
-        
+            
         // Redirigir de nuevo al dashboard
         return redirect()->route('dashboard')->with('success', 'Comentario eliminado exitosamente.');
     }

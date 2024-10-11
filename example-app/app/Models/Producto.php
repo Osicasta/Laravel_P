@@ -11,5 +11,5 @@ class Producto extends Model
 
     protected $table = 'productos'; // Asegúrate de que el nombre de la tabla sea 'productos'
 
-    protected $fillable = ['name', 'description', 'price']; // Actualiza los nombres de las columnas
+    protected $fillable = ['name', 'description', 'price','image']; // Actualiza los nombres de las columnas
 }

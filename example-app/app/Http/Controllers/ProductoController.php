@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -12,7 +11,7 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::all(); // Obtiene todos los productos de la base de datos
-        return view('welcome', compact('productos')); // Devolver la vista 'welcome'
+        return view('welcome', compact('productos')); 
     }
 
     // Mostrar todos los productos en el dashboard
@@ -28,6 +27,7 @@ class ProductoController extends Controller
         $productos = Producto::all(); // Obtén los productos de la base de datos
         return view('pag.menu', compact('productos')); // Devuelve la vista 'pag.menu'
     }
+
     public function store(Request $request)
     {
         // Validación de los datos del formulario
@@ -38,19 +38,19 @@ class ProductoController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación para la imagen
         ]);
 
-        // Guardar la imagen
-        $imagePath = $request->file('image')->store('images', 'public'); // Guardar en 'storage/app/public/images'
+        // Guardar la imagen en public/images
+        $imagePath = $request->file('image')->move(public_path('images'), $request->file('image')->getClientOriginalName());
 
         // Crear un nuevo producto en la base de datos
         Producto::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'image' => $imagePath, // Guardar la ruta de la imagen
+            'image' => 'images/' . $request->file('image')->getClientOriginalName(), // Guardar la ruta de la imagen
         ]);
 
         // Redirigir al dashboard con un mensaje de éxito
-        return redirect()->route('dashboard') // Asegúrate de que esta ruta es la correcta
+        return redirect()->route('dashboard')
             ->with('success', 'Producto creado con éxito.');
     }
 
@@ -80,12 +80,15 @@ class ProductoController extends Controller
         if ($request->hasFile('image')) {
             // Eliminar la imagen anterior si existe
             if ($producto->image) {
-                Storage::delete('public/' . $producto->image);
+                $previousImagePath = public_path($producto->image);
+                if (file_exists($previousImagePath)) {
+                    unlink($previousImagePath); // Eliminar la imagen anterior
+                }
             }
 
-            // Guardar la nueva imagen
-            $imagePath = $request->file('image')->store('images', 'public');
-            $producto->image = $imagePath; // Actualizar la ruta de la imagen
+            // Guardar la nueva imagen en public/images
+            $imagePath = $request->file('image')->move(public_path('images'), $request->file('image')->getClientOriginalName());
+            $producto->image = 'images/' . $request->file('image')->getClientOriginalName(); // Actualizar la ruta de la imagen
         }
 
         // Guardar los cambios en la base de datos
@@ -101,7 +104,10 @@ class ProductoController extends Controller
     {
         // Eliminar la imagen del almacenamiento si existe
         if ($producto->image) {
-            Storage::delete('public/' . $producto->image);
+            $previousImagePath = public_path($producto->image);
+            if (file_exists($previousImagePath)) {
+                unlink($previousImagePath); // Eliminar la imagen
+            }
         }
 
         // Eliminar el producto de la base de datos
@@ -112,3 +118,4 @@ class ProductoController extends Controller
             ->with('success', 'Producto eliminado con éxito.');
     }
 }
+    

@@ -33,9 +33,9 @@ body {
     max-height: 700px;
     width: 100%;
     background: rgba(27, 22, 22, 0.7); /* Fondo del formulario */
-    padding: 20px;
+    padding: 5px;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(1px);
     height: auto;
     
 }

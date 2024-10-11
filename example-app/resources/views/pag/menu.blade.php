@@ -139,7 +139,7 @@
     <!-- end header section -->
   </div>
 
-  <!-- food section -->
+<!-- food section -->
 <section class="food_section layout_padding-bottom">
     <div class="container">
         <div class="heading_container heading_center">

@@ -131,9 +131,14 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
+              @auth
+              <a href="{{ route('exit') }}" class="order_online">Cerrar sesion</a>
+              @else
               <a href="{{ url('/login') }}" class="order_online">
-                Iniciar sesion
-              </a>
+              Iniciar sesión
+             </a>
+              @endauth
+
             </div>
           </div>
         </nav>
@@ -368,48 +373,38 @@
             </h2>
         </div>
 
+        <!-- Filtros de menú -->
+        <div class="filters_menu">
+            <ul class="filters_menu">
+                <li class="active" data-filter="*" onclick="filterCategory('*')">All</li>
+                <li data-filter=".burger" onclick="filterCategory('.burger')">hamburguesa</li>
+                <li data-filter=".pizza" onclick="filterCategory('.pizza')">Pizza</li>
+                <li data-filter=".pasta" onclick="filterCategory('.pasta')">Pasta</li>
+                <li data-filter=".fries" onclick="filterCategory('.fries')">papas</li>
+            </ul>
+        </div>
+
         <div class="filters-content">
-            <div class="row grid">
-                @foreach($productos as $producto) <!-- Suponiendo que pasaste una variable 'productos' a la vista -->
-                    <div class="col-sm-6 col-lg-4 all {{ $producto->categoria }}"> <!-- Asumiendo que cada producto tiene una categoría -->
+            <div class="row grid" id="productGrid">
+                @foreach($productos as $producto)
+                    <div class="col-sm-6 col-lg-4 all {{ $producto->categoria }}">
                         <div class="box">
                             <div class="img-box">
-                                <img src="{{ asset('storage/' . $producto->image) }}" alt="{{ $producto->name }}" style="width: 100%; height: auto;"> <!-- Ruta de la imagen -->
+                                <img src="{{ asset($producto->image) }}" alt="{{ $producto->name }}" style="width: 100%; height: auto;">
                             </div>
                             <div class="detail-box">
                                 <h5>
-                                    {{ $producto->name }} <!-- Nombre del producto -->
+                                    {{ $producto->name }}
                                 </h5>
                                 <p>
-                                    {{ $producto->description }} <!-- Descripción del producto -->
+                                    {{ $producto->description }}
                                 </p>
                                 <div class="options">
                                     <h6>
-                                        ${{ number_format($producto->price, 2) }} <!-- Precio del producto, con formato -->
+                                        ${{ number_format($producto->price, 2) }}
                                     </h6>
                                     <a href="">
-                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                            <g>
-                                                <g>
-                                                    <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                                    c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                </g>
-                                            </g>
-                                            <g>
-                                                <g>
-                                                    <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                                    C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                                    c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                                    C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                </g>
-                                            </g>
-                                            <g>
-                                                <g>
-                                                    <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                                    c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                </g>
-                                            </g>
-                                        </svg>
+                                        <!-- SVG icon aquí -->
                                     </a>
                                 </div>
                             </div>
@@ -420,6 +415,21 @@
         </div>
     </div>
 </section>
+
+<script>
+    function filterCategory(category) {
+        const products = document.querySelectorAll('.grid .col-sm-6');
+
+        products.forEach(product => {
+            // Mostrar u ocultar productos basados en la categoría seleccionada
+            if (category === '*' || product.classList.contains(category.substring(1))) {
+                product.style.display = ""; // Mostrar producto
+            } else {
+                product.style.display = "none"; // Ocultar producto
+            }
+        });
+    }
+</script>
 
 
   <!-- about section -->
@@ -537,9 +547,7 @@
                             <h6>
                                 {{ $comment->name }}
                             </h6>
-                            <p>
-                                Cliente
-                            </p>
+                            
                         </div>
                         <div class="img-box">
                             <img src="images/usuario.png" alt="" class="box-img"> <!-- Cambia la ruta de la imagen según sea necesario -->
@@ -555,7 +563,7 @@
 <!-- Botón para crear un nuevo comentario -->
 <div class="text-center mt-4">
     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#createCommentModal">
-        crea tu propio comentario aqui!
+        ¡Crea tu propio comentario aquí!
     </button>
 </div>
 
@@ -596,20 +604,26 @@
             body: formData,
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Añade el token CSRF aquí si es necesario
+                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Asegúrate de que el token CSRF esté incluido
             }
         })
         .then(response => {
             if (response.ok) {
-                // Si el comentario se ha creado exitosamente, cierra el modal
-                $('#createCommentModal').modal('hide');
-                this.reset(); // Limpia el formulario
-                // Aquí puedes agregar lógica adicional para mostrar un mensaje de éxito
+                return response.json(); // Asegúrate de que el servidor devuelva un JSON
+            } else {
+                throw new Error('Error en la creación del comentario');
             }
+        })
+        .then(data => {
+            // Si el comentario se ha creado exitosamente, cierra el modal
+            $('#createCommentModal').modal('hide'); // Cierra el modal
+            this.reset(); // Limpia el formulario
+            location.reload(); // Recarga la página
         })
         .catch(error => {
             console.error('Error:', error);
-            // Manejar cualquier error aquí
+            // Mostrar el mensaje de error en la consola para depuración
+            alert('Ocurrió un error al crear el comentario: ' + error.message); // Mensaje de error opcional
         });
     });
 </script>

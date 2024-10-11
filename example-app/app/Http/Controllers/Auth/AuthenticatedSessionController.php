@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -25,11 +24,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Autenticar al usuario
         $request->authenticate();
 
+        // Regenerar la sesión por seguridad
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Verificar el correo del usuario y redirigir según corresponda
+        if (strpos($user->email, '@admin') !== false || strpos($user->email, '@editor') !== false) {
+            // Si el usuario tiene correo @admin o @editor, redirige al dashboard
+            return redirect()->route('dashboard');
+        } else {
+            // Si es un usuario normal, redirige a la vista welcome
+            return redirect()->route('welcome');
+        }
     }
 
     /**
